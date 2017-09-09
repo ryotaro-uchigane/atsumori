@@ -48,11 +48,4 @@ class EventsController < ApplicationController
       params.require(:event).permit(:title, :description, :public)
     end
 
-    def logged_in_user
-      unless session[:user_id]
-        flash[:notice] = "ログインしてください"
-        redirect_to login_path
-      end
-    end
-
 end

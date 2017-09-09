@@ -6,6 +6,10 @@
   <h2>企業</h2>
 <% end %>
 
+<p>ID : <%= @user.id %></p>
+
 <p>メールアドレス : <%= @user.email %></p>
 
 <%= link_to('編集する', "/users/#{@user.id}/edit") %>
+
+<%= link_to 'ホーム', '/users' %>

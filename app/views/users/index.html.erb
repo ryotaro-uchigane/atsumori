@@ -1,0 +1,20 @@
+<h1>home</h1>
+
+<% if session[:user_id] %>
+  <% user = User.find_by(id: session[:user_id]) %>
+
+  <h2>ログイン中</h2>
+
+  <h3><%= user.role %></h3>
+
+  <p>ID : <%= user.id %></p>
+
+  <p>mail : <%= user.email %></p>
+
+  <%= link_to 'ログアウト', '/logout'  %>
+<% else %>
+
+  <h2>ログインしていません</h2>
+
+  <%= link_to 'ログイン', '/login'  %>
+<% end %>

@@ -1,0 +1,2 @@
+class Entrysheet < ApplicationRecord
+end

@@ -1,0 +1,11 @@
+<p>
+  title : <%= @event.title %>
+</p>
+<p>
+  description : <%= @event.description %>
+</p>
+<p>
+  public : <%= @event.public %>
+</p>
+<%= link_to "編集", controller: "events", action: :edit %>
+<%= link_to "一覧へ", controller: "events", action: :index %>

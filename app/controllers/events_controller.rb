@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @events = Event.all
@@ -10,7 +11,7 @@ class EventsController < ApplicationController
 
   def create
     event = Event.new(event_params)
-    event.user_id = 1
+    event.user_id = session[:user_id]
     if(event.save)
       redirect_to action: :show, id: event.id
     else

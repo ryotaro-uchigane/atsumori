@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-
+  
   def index
+
   end
 
   def show
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find_by(id: params[:id]).destroy
-    redirect_to '/login'
+    redirect_to login_path
   end
 
   def login_form
@@ -60,7 +61,7 @@ class UsersController < ApplicationController
   end
 
   private
-  def user_params
-    params.require(:user).permit(:email, :password, :role)
-  end
+    def user_params
+      params.require(:user).permit(:email, :password, :role)
+    end
 end

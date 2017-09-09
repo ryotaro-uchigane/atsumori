@@ -25,9 +25,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     @user.save
 
+    session[:user_id]
     redirect_to action: :show, id: @user.id
   end
 

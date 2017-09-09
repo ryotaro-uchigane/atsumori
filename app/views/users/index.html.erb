@@ -11,6 +11,8 @@
 
   <p>mail : <%= user.email %></p>
 
+  <%= link_to '詳細', controller: :users, action: :show, id: user.id %>
+
   <%= link_to 'ログアウト', '/logout'  %>
 <% else %>
 

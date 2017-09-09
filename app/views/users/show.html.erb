@@ -10,6 +10,6 @@
 
 <p>メールアドレス : <%= @user.email %></p>
 
-<%= link_to('編集する', "/users/#{@user.id}/edit") %>
+<%= link_to('編集する', controller: :users, action: :edit, id: @user.id) %>
 
-<%= link_to 'ホーム', '/users' %>
+<%= link_to 'ホーム', controller: :users, action: :index %>

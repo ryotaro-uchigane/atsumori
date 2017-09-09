@@ -4,6 +4,5 @@ class Event < ApplicationRecord
 
   validates :user_id, presence: true
   validates :title, presence: true
-  validates :description,
   validates :public, inclusion: { in: [true, false] }
 end

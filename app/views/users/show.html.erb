@@ -1,2 +1,11 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>ユーザー詳細</h1>
+
+<% if @user.role == 'job_hunting' %>
+  <h2>学生</h2>
+<% else %>
+  <h2>企業</h2>
+<% end %>
+
+<p>メールアドレス : <%= @user.email %></p>
+
+<%= link_to('編集する', "/users/#{@user.id}/edit") %>

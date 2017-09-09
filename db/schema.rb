@@ -10,21 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170909025404) do
+ActiveRecord::Schema.define(version: 20170909053407) do
 
   create_table "documents", force: :cascade do |t|
     t.integer "event_id", null: false
-    t.text "flie_name", null: false
+    t.text "file_name", null: false
     t.text "path", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_documents_on_event_id"
-  end
-
-  create_table "events", force: :cascade do |t|
-    t.text "title", null: false
-    t.text "description"
   end
 
   create_table "entrysheets", force: :cascade do |t|
@@ -36,11 +30,19 @@ ActiveRecord::Schema.define(version: 20170909025404) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "events", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.text "title", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.text "email", null: false
     t.text "password", null: false
     t.text "role", null: false
-
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

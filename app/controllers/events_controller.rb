@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @events = Event.all
@@ -10,7 +11,7 @@ class EventsController < ApplicationController
 
   def create
     event = Event.new(event_params)
-    event.user_id = 1
+    event.user_id = session[:user_id]
     if(event.save)
       redirect_to action: :show, id: event.id
     else
@@ -45,6 +46,13 @@ class EventsController < ApplicationController
 
     def event_params
       params.require(:event).permit(:title, :description, :public)
+    end
+
+    def logged_in_user
+      unless session[:user_id]
+        flash[:notice] = "ログインしてください"
+        redirect_to login_path
+      end
     end
 
 end

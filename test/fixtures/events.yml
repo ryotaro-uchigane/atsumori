@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  user_id: 1
+  title: テストタイトル1
+  description: テスト文章1
+  document_id: 1
+  chat_id: 1
+
+two:
+  id: 2
+  user_id: 2
+  title: テストタイトル2
+  description: テスト文章2
+  document_id: 2
+  chat_id: 2

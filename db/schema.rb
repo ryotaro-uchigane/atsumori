@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170909030006) do
+ActiveRecord::Schema.define(version: 20170909053407) do
 
   create_table "entrysheets", force: :cascade do |t|
     t.integer "user_id"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20170909030006) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "entrysheet_id"
     t.text "email", null: false
     t.text "password", null: false
     t.text "role", null: false

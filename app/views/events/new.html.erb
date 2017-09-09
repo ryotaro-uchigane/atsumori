@@ -1,0 +1,7 @@
+<%= form_for(@event) do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_area :description %>
+  <%= f.check_box :public %>
+  <%= f.label :public %>
+  <%= f.submit "保存" %>
+<% end %>

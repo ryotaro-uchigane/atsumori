@@ -1,4 +1,4 @@
-Rails.application.routes.draw
+Rails.application.routes.draw do
   resources :entrysheets
   resources :users
   resources :events
@@ -8,6 +8,7 @@ Rails.application.routes.draw
   post "login" => "users#login"
   get "logout" => "users#logout"
 
-  get 'chats/show'
+  get "chats_guest" => "chats#chats_guest"
+  get "chats_host" => "chats#chats_host"
 
 end

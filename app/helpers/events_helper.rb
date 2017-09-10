@@ -12,4 +12,9 @@ module EventsHelper
       @following = Following.new
     end
   end
+
+  def check_role
+    user = User.find(session[:user_id])
+    user.role == 'job_hunting' ? true : false
+  end
 end

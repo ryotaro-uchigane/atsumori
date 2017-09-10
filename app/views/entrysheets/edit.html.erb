@@ -1,0 +1,10 @@
+<%= form_for @entrysheet do |form| %>
+  <p>name : <%= form.text_field :name %></p>
+  <p>age : <%= form.number_field :age %></p>
+  <h2>性別</h2>
+  <p>
+    男：<%= form.radio_button :sex, "man" %>
+    女：<%= form.radio_button :sex, "woman" %>
+  </p>
+  <p><%= form.submit "更新" %></p>
+<% end %>

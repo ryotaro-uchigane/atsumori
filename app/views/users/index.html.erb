@@ -14,6 +14,12 @@
   <%= link_to '詳細', controller: :users, action: :show, id: user.id %>
 
   <%= link_to 'ログアウト', '/logout'  %>
+
+  <%= link_to 'イベント一覧', events_path %>
+
+  <p>参加中のイベント一覧</p>
+  <ul>
+  </ul>
 <% else %>
 
   <h2>ログインしていません</h2>

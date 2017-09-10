@@ -1,6 +1,5 @@
 <h1>home</h1>
 
-<% if session[:user_id] %>
   <% user = User.find_by(id: session[:user_id]) %>
 
   <h2>ログイン中</h2>
@@ -14,9 +13,16 @@
   <%= link_to '詳細', controller: :users, action: :show, id: user.id %>
 
   <%= link_to 'ログアウト', '/logout'  %>
-<% else %>
 
-  <h2>ログインしていません</h2>
+  <%= link_to 'イベント一覧', events_path %>
 
-  <%= link_to 'ログイン', '/login'  %>
-<% end %>
+  <% if @user.role == 'job_hunting' %>
+  <p>参加中のイベント一覧</p>
+  <ul>
+    <% @events.each do |event| %>
+      <li><%= link_to event.title, event_path(event.id) %></li>
+    <% end %>
+  </ul>
+  <% else %>
+  <%= link_to 'イベント作成', new_event_path %>
+  <% end %>

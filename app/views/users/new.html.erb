@@ -1,13 +1,12 @@
-<h1>ユーザー登録</h1>
+<div class="user_wrap">
+  <div class="user_wrap_inner">
+    <h1 class="user_h1 txC">ユーザ追加</h1>
 
 <%= form_for(@user) do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+  <p class="user_add_p"><%= f.email_field :email, placeholder: "Eメール" %></p>
+  <p class="user_add_p"><%= f.password_field :password, placeholder: "パスワード" %></p>
+  <p class="user_show_p3 txC">学生の方か企業の方か選択してください。</p>
+  <div class="select_wrap open_mini"><%= f.select :role, {'学生' => 'job_hunting', '企業' => 'company'}%></div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.select :role, {'学生' => 'job_hunting', '企業' => 'company'}%>
-
-  <%= f.submit "登録" %>
+  <p class="user_submit"><%= f.submit "登録" %></p>
 <% end %>

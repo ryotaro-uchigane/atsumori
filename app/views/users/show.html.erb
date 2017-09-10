@@ -1,15 +1,16 @@
-<h1>ユーザー詳細</h1>
-
-<% if @user.role == 'job_hunting' %>
-  <h2>学生</h2>
-<% else %>
-  <h2>企業</h2>
-<% end %>
-
-<p>ID : <%= @user.id %></p>
-
-<p>メールアドレス : <%= @user.email %></p>
-
-<%= link_to('編集する', controller: :users, action: :edit, id: @user.id) %>
-
-<%= link_to 'ホーム', controller: :users, action: :index %>
+<div class="user_wrap">
+  <div class="user_wrap_inner">
+    <h1 class="user_h1 txC">マイページ詳細</h1>
+    <% if @user.role == 'job_hunting' %>
+      <h2 class="user_h2 txC">こちらは<span>学生用</span>のアカウントです</h2>
+    <% else %>
+      <h2 class="user_h2 txC">こちらは<span>企業用</span>のアカウントです</h2>
+    <% end %>
+    <p class="user_show_p"><span class="span01">ID</span><span class="span02"><%= @user.id %></span></p>
+    <p class="user_show_p"><span class="span01">mail</span><span class="span02"><%= @user.email %></span></p>
+    <div class="link_wrap">
+      <%= link_to 'ホーム', controller: :users, action: :index %>
+      <%= link_to('編集する', controller: :users, action: :edit, id: @user.id) %>
+    </div>
+  </div>
+</div>

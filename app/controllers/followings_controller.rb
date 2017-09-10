@@ -10,8 +10,9 @@ class FollowingsController < ApplicationController
 
   def destroy
     following = Following.find(params[:id])
+    event_id = following.event_id
     following.destroy
-    redirect_to controller: :events, action: :show, id: following.event_id
+    redirect_to controller: :events, action: :show, id: event_id
   end
 
   private

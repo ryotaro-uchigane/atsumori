@@ -1,0 +1,26 @@
+<p>
+  title : <%= @event.title %>
+</p>
+<p>
+  description : <%= @event.description %>
+</p>
+<p>
+  public : <%= @event.public %>
+</p>
+<%= link_to "一覧へ", controller: "events", action: :index %>
+
+
+<% if check_role %>
+  <% get_following @event.id %>
+  <% if check_following @event.id %>
+    <%= form_for @following, url: followings_path, method: :post do |f| %>
+    <%= f.hidden_field :event_id, value: @event.id %>
+    <%= f.hidden_field :user_id, value: session[:user_id] %>
+    <%= f.submit "参加" %>
+    <% end %>
+  <% else %>
+    <%= link_to "参加をキャンセル", following_path(@following.id), method: :delete %>
+  <% end %>
+<% else %>
+  <%= link_to "編集", controller: "events", action: :edit %>
+<% end %>

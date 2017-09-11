@@ -1,0 +1,98 @@
+let localStream = null;
+let peer = null;
+let video = document.getElementById('my-video');
+let room = null;
+
+getMedia(video);
+setJobHunterChats();
+
+//Webカメラへアクセスするためのメソッド
+function getMedia(video) {
+  navigator.getUserMedia = navigator.getUserMedia ||
+                           navigator.webkitGetUserMedia||
+                           window.navigator.mozGetUserMedia;
+
+  window.URL = window.URL || window.webkitURL;
+
+  navigator.getUserMedia({video: true, audio: false},
+    function(stream) { // for success case
+      console.log(stream);
+      localStream = stream
+      video.src = window.URL.createObjectURL(stream);
+    }, function(err) { // for error case
+      console.log(err);
+    }
+  );
+}
+
+
+function setJobHunterChats() {
+  setPeer('jobHunter-' + gon.user_id)
+}
+
+function setPeer(id) {
+  peer = new Peer(id, {
+    key: "058778ca-19fc-49dc-b554-68b0054c358c",
+    debug: 3
+  });
+
+  peer.on('open', function() {
+    console.log("ok : " + peer.id);
+    room = setRoom(localStream);
+  });
+}
+
+function setRoom(newStream, callBack = null) {
+  room = peer.joinRoom(gon.room_id);
+
+  room.on('open', function() {
+    console.log("room open");
+    if(this.replaceStream(newStream)) {
+      if (Object.keys(peer.rooms[gon.room_id].connections).length === 0) {
+        this.close();
+        peer.disconnect();
+        peer.destroy();
+        location.href="/users";
+      }
+    }
+  });
+
+  room.on('peerJoin', function(e) {
+    console.log("peer Join!");
+    this.replaceStream(newStream);
+  });
+
+  room.on('stream', function(stream) {
+    console.log("recive stream");
+    console.log(stream);
+    console.log(stream.peerId);
+    let videoId = 'athor-video-' + stream.peerId;
+    appendVideo(videoId);
+    let atherVideo = document.getElementById(videoId);
+    atherVideo.src = window.URL.createObjectURL(stream);
+  });
+
+  room.on('peerLeave', function(peerId) {
+    console.log("peer Leave!");
+    console.log(peerId);
+    removeChats('athor-video-' + peerId);
+  });
+}
+
+function appendVideo(id) {
+  videoArea = document.getElementById("video-area");
+  div = document.createElement('div');
+  div.setAttribute("width", "400");
+  div.setAttribute("height", "300");
+  video = document.createElement('video');
+  video.setAttribute("id", id);
+  video.setAttribute("autoplay", 1);
+  div.appendChild(video);
+  videoArea.appendChild(div);
+}
+
+function removeChats(id) {
+  removeVideo = document.getElementById(id);
+  videoArea = document.getElementById("video-area");
+  videoArea.removeChild(removeVideo.parentNode);
+}

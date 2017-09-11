@@ -17,12 +17,20 @@
   <%= link_to 'イベント一覧', events_path %>
 
   <% if @user.role == 'job_hunting' %>
-  <p>参加中のイベント一覧</p>
+    <p>参加中のイベント一覧</p>
+  <% else %>
+    <p><%= link_to 'イベント作成', new_event_path %></p>
+    <p>作成したイベント一覧</p>
+  <% end %>
+
   <ul>
     <% @events.each do |event| %>
-      <li><%= link_to event.title, event_path(event.id) %></li>
+      <li><%= link_to event.title, event_path(event.id) %> :
+        <% if @user.role == 'job_hunting' %>
+          <%= link_to 'チャットに参加する', chats_guest_path(page_id: event.id) %>
+        <% else %>
+          <%= link_to 'チャットを開始する', chats_host_path(page_id: event.id) %>
+        <% end %>
+      </li>
     <% end %>
   </ul>
-  <% else %>
-  <%= link_to 'イベント作成', new_event_path %>
-  <% end %>

@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   get "login" => "users#login_form"
   post "login" => "users#login"
   get "logout" => "users#logout"
+
+  get "chats_guest" => "chats#chats_guest"
+  get "chats_host" => "chats#chats_host"
+
 end

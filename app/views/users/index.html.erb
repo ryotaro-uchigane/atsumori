@@ -1,27 +1,36 @@
 <div class="user_wrap">
   <div class="user_wrap_inner">
     <h1 class="user_h1 txC">マイページTOP</h1>
-    <% if session[:user_id] %>
-      <% user = User.find_by(id: session[:user_id]) %>
       <h2 class="user_h2 txC">ただいまログイン中です。</h2>
-      <p class="user_show_p"><span class="span01">アカウント</span><span class="span02"><%= user.role %></span></p>
-      <p class="user_show_p"><span class="span01">ID</span><span class="span02"><%= user.id %></span></p>
-      <p class="user_show_p"><span class="span01">mail</span><span class="span02"><%= user.email %></span></p>
+      <p class="user_show_p"><span class="span01">アカウント</span><span class="span02"><%= @user.role %></span></p>
+      <p class="user_show_p"><span class="span01">ID</span><span class="span02"><%= @user.id %></span></p>
+      <p class="user_show_p"><span class="span01">mail</span><span class="span02"><%= @user.email %></span></p>
       <div class="link_wrap3">
-        <%= link_to '詳細', controller: :users, action: :show, id: user.id %>
+        <%= link_to '詳細', controller: :users, action: :show, id: @user.id %>
         <%= link_to 'イベント一覧', events_path %>
         <%= link_to 'ログアウト', '/logout'  %>
       </div>
     <% end %>
+  
+    <%= link_to 'イベント一覧', events_path %>
+  
     <% if @user.role == 'job_hunting' %>
-    <h3 class="user_h3 txC">参加予定のイベント一覧</h3>
-    <% @events.each do |event| %>
-      <ul  class="event_top_list">
-        <li><%= link_to event.title, event_path(event.id) %></li>
-    </ul>
-    <% end %>
+      <h3 class="user_h3 txC">参加予定のイベント一覧</h3>
     <% else %>
-    <%= link_to 'イベント作成', new_event_path %>
+      <%= link_to 'イベント作成', new_event_path %>
+      <h3 class="user_h3 txC">作成したイベント一覧</h3>
     <% end %>
+  
+    <ul class="event_top_list">
+      <% @events.each do |event| %>
+        <li><%= link_to event.title, event_path(event.id) %> :
+          <% if @user.role == 'job_hunting' %>
+            <%= link_to 'チャットに参加する', chats_guest_path(page_id: event.id) %>
+          <% else %>
+            <%= link_to 'チャットを開始する', chats_host_path(page_id: event.id) %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>

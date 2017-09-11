@@ -166,10 +166,6 @@ input, button, textarea, select {
   border:1px solid #000;
 }
 
-.entrysheets_add_p1{
-
-}
-
 .entrysheets_add_p1 input,.entrysheets_add_p2 input{
   display: block;
   width:50%;

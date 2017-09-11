@@ -6,10 +6,10 @@
       <p class="user_show_p"><span class="span01">ID</span><span class="span02"><%= @user.id %></span></p>
       <p class="user_show_p"><span class="span01">mail</span><span class="span02"><%= @user.email %></span></p>
       <div class="link_wrap">
-        <%= link_to '詳細', controller: :users, action: :show, id: user.id %>
+        <%= link_to '詳細', controller: :users, action: :show, id: @user.id %>
         <%= link_to 'ログアウト', '/logout'  %>
       </div>
-    
+
       <%= link_to 'イベント一覧', events_path %>
 
       <% if @user.role == 'job_hunting' %>

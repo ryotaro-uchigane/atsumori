@@ -1,8 +1,17 @@
-<%= form_for(@event) do |f| %>
-  <%= f.text_field :title %>
-  <%= f.text_area :description %>
-  <%= f.check_box :public %>
-  <%= f.label :public %>
-  <%= f.submit "保存" %>
-  <%= link_to "削除", event_path(@event.id), method: :delete%>
-<% end %>
+<div class="entrysheets_add_wrap">
+  <div class="entrysheets_add_wrap_inner">
+    <h1 class="entrysheets_add_h1 txC">イベント更新</h1>
+    <%= form_for(@event) do |f| %>
+      <p class="text_field event_text"><%= f.text_field :title, placeholder: "イベントタイトル" %></p>
+      <p class="event_textarea"><%= f.text_area :description, placeholder: "どのようなイベントを行うのか詳しく" %></p>
+      <p class="event_checkbox_wrap">
+        <%= f.check_box :public %>
+        <label for="event_public" class="switch-on">public</label>
+      </p>
+      <p class="event_submit"><%= f.submit "保存" %></p>
+      <div class="link_wrap event_link txC">
+        <%= link_to "削除", event_path(@event.id), method: :delete%>
+      </div>
+    <% end %>
+  </div>
+</div>

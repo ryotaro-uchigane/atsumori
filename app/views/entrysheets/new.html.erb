@@ -1,10 +1,16 @@
-<%= form_for @entrysheet do |form| %>
-  <p>name : <%= form.text_field :name %></p>
-  <p>age : <%= form.number_field :age %></p>
-  <h2>性別</h2>
-  <p>
-    男：<%= form.radio_button :sex, "man" %>
-    女：<%= form.radio_button :sex, "woman" %>
-  </p>
-  <p><%= form.submit "送信" %></p>
-<% end %>
+<div class="entrysheets_add_wrap">
+  <div class="entrysheets_add_wrap_inner">
+    <h1 class="entrysheets_add_h1 txC">エントリーシート追加</h1>
+    <%= form_for @entrysheet do |form| %>
+      <p class="entrysheets_add_p1"><%= form.text_field :name, placeholder: "名前" %></p>
+      <p class="entrysheets_add_p2"><%= form.text_field :age, placeholder: "年齢" %></p>
+      <p class="entrysheets_add_radio_wrap">
+        <%= form.radio_button :sex, "man", {:checked => true} %>
+        <label for="entrysheet_sex_man" class="switch-on">man</label>
+        <%= form.radio_button :sex, "woman" %>
+        <label for="entrysheet_sex_woman" class="switch-off">woman</label>
+      </p>
+      <p class="entrysheets_add_submit"><%= form.submit "送信" %></p>
+    <% end %>
+  </div>
+</div>

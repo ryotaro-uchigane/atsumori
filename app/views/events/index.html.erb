@@ -1,5 +1,10 @@
-<% @events.each do |event| %>
-  <ul>
-    <li><%= link_to event.title, event_path(event.id)%></li>
-  </ul>
-<% end %>
+<div class="event_wrap">
+  <div class="event_wrap_inner">
+    <h1 class="event_h1 txC">イベント一覧</h1>
+    <% @events.each do |event| %>
+      <ul class="event_top_list">
+        <li><%= link_to event.title, event_path(event.id)%></li>
+      </ul>
+    <% end %>
+  </div>
+</div>

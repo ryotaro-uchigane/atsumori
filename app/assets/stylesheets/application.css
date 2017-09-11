@@ -71,6 +71,10 @@ body { font-family: 'ヒラギノ角ゴシック', 'Hiragino Sans', 'ヒラギ�
 /* 左寄せ */
 .flL { float: left; }
 
+.ma-t30{ margin-top:30px !important; }
+
+.ma-u30{ margin-bottom:30px !important; }
+
 /* 右寄せ */
 .flR { float: right; }
 
@@ -121,7 +125,7 @@ a:hover { opacity: 0.8; }
   .sp-cfx:after { content: ""; display: block; clear: both; }
   .sp-break:before { content: "\A"; white-space: pre; } }
 
-  input, button, textarea, select {
+input, button, textarea, select {
   margin: 0;
   padding: 0;
   background: none;
@@ -133,10 +137,9 @@ a:hover { opacity: 0.8; }
   appearance: none;
 }
 
+ /*エントリーシート追加ページ*/
 
- /*イベント追加ページ*/
-
- .event_add_wrap{
+ .entrysheets_add_wrap{
    background: #33b998;
    width:100%;
    min-width:1200px;
@@ -145,7 +148,7 @@ a:hover { opacity: 0.8; }
    box-sizing: border-box;
  }
 
- .event_add_wrap_inner{
+ .entrysheets_add_wrap_inner{
    background: #fff;
    width: 80%;
    min-height:80%;
@@ -153,7 +156,7 @@ a:hover { opacity: 0.8; }
    padding: 0 0 50px;
  }
 
- .event_add_h1{
+ .entrysheets_add_h1{
   font-size:50px;
   padding:50px 0 80px;
   letter-spacing: 0.2em;
@@ -163,11 +166,7 @@ a:hover { opacity: 0.8; }
   border:1px solid #000;
 }
 
-.event_add_p1{
-
-}
-
-.event_add_p1 input,.event_add_p2 input{
+.entrysheets_add_p1 input,.entrysheets_add_p2 input{
   display: block;
   width:50%;
   margin:0 auto 40px;
@@ -177,7 +176,7 @@ a:hover { opacity: 0.8; }
   box-sizing: border-box;
 }
 
-.event_add_submit input[type="submit"]{
+.entrysheets_add_submit input[type="submit"]{
   display: block;
   width:50%;
   margin:40px auto 0;
@@ -191,20 +190,20 @@ a:hover { opacity: 0.8; }
   transition: all .2s cubic-bezier(0.250, 0.250, 0.750, 0.750);
 }
 
-.event_add_submit input[type="submit"]:hover{
+.entrysheets_add_submit input[type="submit"]:hover{
   color:#fff;
   background:#33b998;
 }
 
-.event_add_radio_wrap{
+.entrysheets_add_radio_wrap{
   display: table;
   margin:0 auto;
 }
 
-.event_add_radio_wrap input {
+.entrysheets_add_radio_wrap input {
 	display: none;
 }
-.event_add_radio_wrap label{
+.entrysheets_add_radio_wrap label{
 	display: block;
 	float: left;
 	cursor: pointer;
@@ -218,24 +217,24 @@ a:hover { opacity: 0.8; }
 	line-height: 1;
 	transition: .2s;
 }
-.event_add_radio_wrap label:first-of-type{
+.entrysheets_add_radio_wrap label:first-of-type{
 	border-radius: 3px 0 0 3px;
 }
-.event_add_radio_wrap label:last-of-type{
+.entrysheets_add_radio_wrap label:last-of-type{
 	border-radius: 0 3px 3px 0;
 }
-.event_add_radio_wrap input[type="radio"]:checked + .switch-on {
+.entrysheets_add_radio_wrap input[type="radio"]:checked + .switch-on {
 	background-color: #2da0ab;
 	color: #fff;
 }
-.event_add_radio_wrap input[type="radio"]:checked + .switch-off {
+.entrysheets_add_radio_wrap input[type="radio"]:checked + .switch-off {
 	background-color: #e67168;
 	color: #fff;
 }
 
 /*イベントshowページ*/
 
-.event_show_wrap{
+.entrysheets_show_wrap{
   background: #33b998;
   width:100%;
   min-width:1200px;
@@ -244,7 +243,7 @@ a:hover { opacity: 0.8; }
   box-sizing: border-box;
 }
 
-.event_show_wrap_inner{
+.entrysheets_show_wrap_inner{
   background: #fff;
   width: 80%;
   min-height:80%;
@@ -252,28 +251,28 @@ a:hover { opacity: 0.8; }
   padding: 0 0 50px;
 }
 
-.event_show_h1{
+.entrysheets_show_h1{
  font-size:50px;
  padding:50px 0 80px;
  letter-spacing: 0.2em;
 }
 
-.event_show_p{
+.entrysheets_show_p{
   font-size: 20px;
   padding: 0 15% 5%;
 }
 
-.event_show_p span{
+.entrysheets_show_p span{
   padding:1%;
   box-sizing: border-box;
 }
 
-.event_show_p .span01{
+.entrysheets_show_p .span01{
   display: inline-block;
   width:10%;
 }
 
-.event_show_p .span02{
+.entrysheets_show_p .span02{
   display: inline-block;
   width:70%;
   margin:0 0 0 10%;
@@ -318,6 +317,12 @@ a:hover { opacity: 0.8; }
   letter-spacing: 0.1em;
 }
 
+.user_h3{
+  font-size:25px;
+  padding: 5% 0;
+  letter-spacing: 0.2em;
+}
+
 .user_show_p{
   font-size: 20px;
   padding: 0 15% 5%;
@@ -351,7 +356,7 @@ a:hover { opacity: 0.8; }
 }
 
 .link_wrap{
-  width:70%;
+  width:80%;
   margin:0 auto;
 }
 
@@ -387,12 +392,28 @@ a:hover { opacity: 0.8; }
   transition: all .2s cubic-bezier(0.250, 0.250, 0.750, 0.750);
 }
 
-.link_wrap > a:hover,.link_wrap2 > a:hover{
+.link_wrap3 > a{
+  text-align: center;
+  display: inline-block;
+  width:27%;
+  margin:0 4% 0 2%;
+  padding:15px;
+  border:5px solid #33b998;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size:15px;
+  color:#000;
+  letter-spacing: 0.5em;
+  cursor: pointer;
+  transition: all .2s cubic-bezier(0.250, 0.250, 0.750, 0.750);
+}
+
+.link_wrap > a:hover,.link_wrap2 > a:hover,.link_wrap3 > a:hover{
   color:#fff;
   background: #33b998;
 }
 
-.link_wrap > a:last-child{
+.link_wrap > a:last-child,.link_wrap3 > a:last-child{
   margin:0 5% 0 0;
 }
 
@@ -412,7 +433,7 @@ a:hover { opacity: 0.8; }
   width:75%;
   padding:2%;
   font-size:18px;
-  background: #fff;
+  border-bottom: 2px solid #000;
   box-sizing: border-box;
 }
 
@@ -495,4 +516,145 @@ a:hover { opacity: 0.8; }
   font-size:1em;
   line-height:1;
   color:#333;
+}
+
+/*イベント追加ページ*/
+
+.event_wrap{
+  background: #33b998;
+  width:100%;
+  min-width:1200px;
+  min-height: 100vh;
+  padding:50px;
+  box-sizing: border-box;
+}
+
+.event_wrap_inner{
+  background: #fff;
+  width: 80%;
+  min-height:80%;
+  margin:auto;
+  padding: 0 0 50px;
+}
+
+.event_h1{
+ font-size:50px;
+ padding:50px 0 80px;
+ letter-spacing: 0.2em;
+}
+
+.event_h2 {
+  width: 80%;
+  margin: 10px auto 20px;
+  padding: 10px;
+  font-size: 20px;
+  color: #fff;
+  background: #33b998;
+  box-sizing: border-box;
+}
+
+.event_checkbox_wrap {
+	display: table;
+  margin:0 auto;
+}
+
+.event_checkbox_wrap input {
+	display: none;
+}
+.event_checkbox_wrap label{
+	display: block;
+	float: left;
+	cursor: pointer;
+	width: 60px;
+	margin: 0;
+	padding: 10px;
+	background: #bdc3c7;
+	color: #869198;
+	font-size: 16px;
+	text-align: center;
+	line-height: 1;
+	transition: .2s;
+}
+.event_checkbox_wrap label:first-of-type{
+	border-radius: 3px 0 0 3px;
+}
+.event_checkbox_wrap label:last-of-type{
+	border-radius: 0 3px 3px 0;
+}
+.event_checkbox_wrap input[type="checkbox"]:checked + .switch-on {
+	background-color: #33b998;
+	color: #fff;
+}
+
+.event_text input[type="text"]{
+  width:100%;
+}
+
+.event_textarea textarea{
+  display: block;
+  width:50%;
+  min-height:200px;
+  margin:0 auto 2%;
+  padding:5px;
+  font-size:16px;
+  border: 1px solid #000;
+  box-sizing: border-box;
+}
+
+.event_show_p{
+  width:80%;
+  margin:20px auto;
+  padding:0 20px;
+  box-sizing: border-box;
+}
+
+.event_submit{
+  width:80%;
+  margin:0 auto;
+}
+
+.event_submit input[type="submit"]{
+  display: block;
+  width:40%;
+  margin:30px auto 0;
+  margin-left :28%;
+  padding:15px 20px;
+  border:5px solid #33b998;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size:20px;
+  letter-spacing: 0.5em;
+  cursor: pointer;
+  transition: all .2s cubic-bezier(0.250, 0.250, 0.750, 0.750);
+}
+
+.event_submit input[type="submit"]:hover{
+  color:#fff;
+  background:#33b998;
+}
+
+.event_top_list{
+  width:80%;
+  margin:0 auto;
+  box-sizing: border-box;
+}
+
+.event_top_list li{
+  width:100%;
+}
+
+.event_top_list li a{
+  text-align: center;
+  display: block;
+  width: 100%;
+  padding:30px;
+  border-bottom:2px solid #000;
+  box-sizing: border-box;
+  color:#000;
+  transition: all .2s cubic-bezier(0.250, 0.250, 0.750, 0.750);
+}
+
+.event_top_list li a:hover{
+  color:#fff;
+  background: #33b998;
 }

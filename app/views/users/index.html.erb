@@ -5,30 +5,32 @@
       <p class="user_show_p"><span class="span01">アカウント</span><span class="span02"><%= @user.role %></span></p>
       <p class="user_show_p"><span class="span01">ID</span><span class="span02"><%= @user.id %></span></p>
       <p class="user_show_p"><span class="span01">mail</span><span class="span02"><%= @user.email %></span></p>
-      <div class="link_wrap">
+      <div class="link_wrap3">
         <%= link_to '詳細', controller: :users, action: :show, id: @user.id %>
+        <%= link_to 'イベント一覧', events_path %>
         <%= link_to 'ログアウト', '/logout'  %>
       </div>
-
-      <%= link_to 'イベント一覧', events_path %>
-
-      <% if @user.role == 'job_hunting' %>
-        <p>参加中のイベント一覧</p>
-      <% else %>
-        <p><%= link_to 'イベント作成', new_event_path %></p>
-        <p>作成したイベント一覧</p>
+    <% end %>
+  
+    <%= link_to 'イベント一覧', events_path %>
+  
+    <% if @user.role == 'job_hunting' %>
+      <h3 class="user_h3 txC">参加予定のイベント一覧</h3>
+    <% else %>
+      <%= link_to 'イベント作成', new_event_path %>
+      <h3 class="user_h3 txC">作成したイベント一覧</h3>
+    <% end %>
+  
+    <ul class="event_top_list">
+      <% @events.each do |event| %>
+        <li><%= link_to event.title, event_path(event.id) %> :
+          <% if @user.role == 'job_hunting' %>
+            <%= link_to 'チャットに参加する', chats_guest_path(page_id: event.id) %>
+          <% else %>
+            <%= link_to 'チャットを開始する', chats_host_path(page_id: event.id) %>
+          <% end %>
+        </li>
       <% end %>
-
-      <ul>
-        <% @events.each do |event| %>
-          <li><%= link_to event.title, event_path(event.id) %> :
-            <% if @user.role == 'job_hunting' %>
-              <%= link_to 'チャットに参加する', chats_guest_path(page_id: event.id) %>
-            <% else %>
-              <%= link_to 'チャットを開始する', chats_host_path(page_id: event.id) %>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
+    </ul>
   </div>
 </div>

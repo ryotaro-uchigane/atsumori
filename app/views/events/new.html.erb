@@ -1,7 +1,14 @@
-<%= form_for(@event) do |f| %>
-  <%= f.text_field :title %>
-  <%= f.text_area :description %>
-  <%= f.check_box :public %>
-  <%= f.label :public %>
-  <%= f.submit "保存" %>
-<% end %>
+<div class="event_wrap">
+  <div class="event_wrap_inner">
+    <h1 class="event_h1 txC">イベント追加</h1>
+    <%= form_for(@event) do |f| %>
+      <p class="text_field event_text"><%= f.text_field :title, placeholder: "イベントタイトル" %></p>
+      <p class="event_textarea"><%= f.text_area :description, placeholder: "どのようなイベントを行うのか詳しく" %></p>
+      <p class="event_checkbox_wrap">
+        <%= f.check_box :public %>
+        <label for="event_public" class="switch-on">public</label>
+      </p>
+      <p class="user_submit"><%= f.submit "保存" %></p>
+    <% end %>
+  </div>
+</div>

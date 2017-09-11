@@ -1,21 +1,34 @@
 <div class="user_wrap">
   <div class="user_wrap_inner">
     <h1 class="user_h1 txC">マイページTOP</h1>
-    <% if session[:user_id] %>
-      <% user = User.find_by(id: session[:user_id]) %>
       <h2 class="user_h2 txC">ただいまログイン中です。</h2>
-      <p class="user_show_p"><span class="span01">アカウント</span><span class="span02"><%= user.role %></span></p>
-      <p class="user_show_p"><span class="span01">ID</span><span class="span02"><%= user.id %></span></p>
-      <p class="user_show_p"><span class="span01">mail</span><span class="span02"><%= user.email %></span></p>
+      <p class="user_show_p"><span class="span01">アカウント</span><span class="span02"><%= @user.role %></span></p>
+      <p class="user_show_p"><span class="span01">ID</span><span class="span02"><%= @user.id %></span></p>
+      <p class="user_show_p"><span class="span01">mail</span><span class="span02"><%= @user.email %></span></p>
       <div class="link_wrap">
         <%= link_to '詳細', controller: :users, action: :show, id: user.id %>
         <%= link_to 'ログアウト', '/logout'  %>
       </div>
-    <% else %>
-      <h2>ログインしていません</h2>
-      <div class="link_wrap">
-        <%= link_to 'ログイン', '/login'  %>
-      </div>
-    <% end %>
+    
+      <%= link_to 'イベント一覧', events_path %>
+
+      <% if @user.role == 'job_hunting' %>
+        <p>参加中のイベント一覧</p>
+      <% else %>
+        <p><%= link_to 'イベント作成', new_event_path %></p>
+        <p>作成したイベント一覧</p>
+      <% end %>
+
+      <ul>
+        <% @events.each do |event| %>
+          <li><%= link_to event.title, event_path(event.id) %> :
+            <% if @user.role == 'job_hunting' %>
+              <%= link_to 'チャットに参加する', chats_guest_path(page_id: event.id) %>
+            <% else %>
+              <%= link_to 'チャットを開始する', chats_host_path(page_id: event.id) %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
   </div>
 </div>

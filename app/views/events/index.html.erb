@@ -1,5 +1,5 @@
 <% @events.each do |event| %>
-  <tr>
-    <td><%= link_to event.title, event_path(event.id)%></td>
-  </tr>
+  <ul>
+    <li><%= link_to event.title, event_path(event.id)%></li>
+  </ul>
 <% end %>

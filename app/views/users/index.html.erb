@@ -10,17 +10,14 @@
         <%= link_to 'イベント一覧', events_path %>
         <%= link_to 'ログアウト', '/logout'  %>
       </div>
-    <% end %>
-  
-    <%= link_to 'イベント一覧', events_path %>
-  
+
     <% if @user.role == 'job_hunting' %>
       <h3 class="user_h3 txC">参加予定のイベント一覧</h3>
     <% else %>
       <%= link_to 'イベント作成', new_event_path %>
       <h3 class="user_h3 txC">作成したイベント一覧</h3>
     <% end %>
-  
+
     <ul class="event_top_list">
       <% @events.each do |event| %>
         <li><%= link_to event.title, event_path(event.id) %> :

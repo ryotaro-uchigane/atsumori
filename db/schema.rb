@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170909175119) do
+ActiveRecord::Schema.define(version: 20170910094106) do
 
   create_table "documents", force: :cascade do |t|
     t.integer "event_id", null: false
@@ -46,6 +46,9 @@ ActiveRecord::Schema.define(version: 20170909175119) do
     t.integer "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_followings_on_event_id"
+    t.index ["user_id", "event_id"], name: "index_followings_on_user_id_and_event_id", unique: true
+    t.index ["user_id"], name: "index_followings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

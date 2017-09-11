@@ -1,12 +1,15 @@
-<h1>Host</h1>
+<div class="event_wrap">
+  <div class="event_wrap_inner">
+<h1>Guest</h1>
 
-<div id="video-area">
+<div id="video-area" class="cfx">
 
-  <div width="400" height="300">
+  <div class="chat_wrap flL" width="40%" height="300">
     <video id="my-video" autoplay="1"></video>
   </div>
 
 </div>
-
-<%= link_to "退出", users_path %>
+<div class="link_wrap ma-t30"><%= link_to "退出", users_path %></div>
 <%= javascript_include_tag "chat_host" %>
+</div>
+<div>

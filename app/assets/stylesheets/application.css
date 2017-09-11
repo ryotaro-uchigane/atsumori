@@ -658,3 +658,17 @@ input, button, textarea, select {
   color:#fff;
   background: #33b998;
 }
+/* chatエリア */
+
+#video-area{
+
+}
+
+#video-area .chat_wrap{
+  width: 40%;
+  margin:5%;
+}
+
+#video-area .chat_wrap video{
+  width:100%;
+}

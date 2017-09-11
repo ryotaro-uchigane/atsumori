@@ -16,9 +16,11 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
 
-    @user.update(user_params)
-
-    redirect_to action: :show, id: @user.id
+    if @user.update(user_params)
+      redirect_to action: :show, id: @user.id
+    else
+      render action: :edit
+    end
   end
 
   def new
@@ -27,10 +29,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.save
-
-    session[:user_id]
-    redirect_to action: :show, id: @user.id
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to action: :show, id: @user.id
+    else
+      render action: :new
+    end
   end
 
   def destroy
